@@ -45,6 +45,25 @@ CRYT is a cryptocurrency to make the world a better place.
     - known jetty issue
 
 ----
+## Setting up Node and Forging ##
+
+  - Ubuntu 18:04
+    - `apt install default-jdk`
+    - `.apt install openjdk-11-jdk-headless`
+    - `git clone https://github.com/CryTrExcom/CRYT_Blockchain.git`
+    - `sudo apt update`
+    - `sudo apt install nodejs`
+    - `sudo apt install npm`
+    - `sudo ufw allow 11111`
+    - `cd CRYT_Blockchain`
+    - `screen`
+    - `sh ./compile.sh`
+    - `sh ./run.sh`
+    - `CTRL+A+D`
+    - `curl -d requestType=startForging -d secretPhrase="<your secret phrase" http://localhost:11112/nxt`
+    
+    - Need to have CRYT on Balance for forgingo
+----
 ## Further Reading ##
 
   - in this repository:
