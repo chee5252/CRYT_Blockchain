@@ -62,7 +62,7 @@ CRYT is a cryptocurrency to make the world a better place.
     - `CTRL+A+D`
     - `curl -d requestType=startForging -d secretPhrase="<your secret phrase" http://localhost:11112/nxt`
     
-Need to have CRYT on Balance for forgingo
+    Need to have CRYT on Balance for forging
 ----
 ## Further Reading ##
 
