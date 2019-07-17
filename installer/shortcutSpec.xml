@@ -1,0 +1,36 @@
+<shortcuts>
+	<skipIfNotSupported/>
+	<defaultCurrentUser/>
+	<programGroup defaultName="CryTrExCoin" location="startMenu"/>
+	<shortcut
+		name="CryTrExCoin Server"
+		target="$INSTALL_PATH\CryTrExCoin.exe"
+		commandLine=""
+		workingDirectory="$INSTALL_PATH"
+        description="Start CryTrExCoin server"
+		iconFile="$INSTALL_PATH\html\www\favicon.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+		desktop="yes"
+        applications="no"
+        startMenu="no"
+		startup="no"
+		runAsAdministrator="true">
+	</shortcut>	
+	<shortcut
+		name="CryTrExCoin Wallet"
+		target="http://localhost:11112/index.html"
+		commandLine=""
+		workingDirectory="$INSTALL_PATH"
+        description="Launch CryTrExCoin wallet in browser"
+		iconFile="$INSTALL_PATH\html\www\favicon.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+		desktop="yes"
+        applications="no"
+        startMenu="no"
+		startup="no">
+	</shortcut>	
+</shortcuts>
