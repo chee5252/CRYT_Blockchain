@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.cryt.mobile.wallet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CRYT Mobile Wallet</name>
+    <description>
+        Reference implementation mobile wallet for CRYT.
+    </description>
+    <author email="dev@crytrex.com" href="https://crytrex.com/">
+        CryTrEx.com
+    </author>
+    <version>1.0.0</version>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="FadeSplashScreenDuration" value="5000" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="loadUrlTimeoutValue" value="60000" />
+</widget>
