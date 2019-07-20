@@ -1,5 +1,5 @@
 ----
-# Welcome to CRYT! #
+# Welcome to CRYT BLOCKCHAIN! #
 
 ----
 ## What is CRYT? ##
