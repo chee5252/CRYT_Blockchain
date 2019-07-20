@@ -3,7 +3,7 @@
 
 ----
 ## What is CRYT? ##
-CRYT is a cryptocurrency to make the world a better place.
+CRYT is a Blockchain ecosystem to make the world a better place.
 
 ----
 ## Get it! ##
@@ -17,7 +17,7 @@ CRYT is a cryptocurrency to make the world a better place.
 ----
 ## Run it! ##
 
-  - click on the CRYT icon, or start from the command line:
+  - Double on:
   - Unix: `./start.sh`
   - Window: `run.bat`
 
@@ -34,35 +34,31 @@ CRYT is a cryptocurrency to make the world a better place.
 ## Troubleshooting the NRS (CRYT Reference Software) ##
 
   - How to Stop the NRS Server?
-    - click on CRYT Stop icon, or run `./stop.sh`
     - or if started from command line, ctrl+c or close the console window
 
   - UI Errors or Stacktraces?
-    - report on BitBucket
+    - report @ dev@crytrex.com
 
   - Permissions Denied?
-    - no spaces and only latin characters in the path to the NRS installation directory
+    - no spaces and only latin characters in the path to the CRYT installation directory
     - known jetty issue
 
 ----
-## Setting up Node and Forging ##
+## Setting up Node and Help Network ##
 
   - Ubuntu 18:04
     - `apt install default-jdk`
-    - `.apt install openjdk-11-jdk-headless`
+    - `apt install openjdk-11-jdk-headless`
     - `git clone https://github.com/CryTrExcom/CRYT_Blockchain.git`
     - `sudo apt update`
-    - `sudo apt install nodejs`
-    - `sudo apt install npm`
     - `sudo ufw allow 11111`
+    - `sudo ufw allow 11112`
     - `cd CRYT_Blockchain`
     - `screen`
     - `sh ./compile.sh`
     - `sh ./run.sh`
     - `CTRL+A+D`
-    - `curl -d requestType=startForging -d secretPhrase="<your secret phrase" http://localhost:11112/nxt`
-    
-    Need to have CRYT on Balance for forging
+
 ----
 ## Further Reading ##
 
@@ -71,6 +67,8 @@ CRYT is a cryptocurrency to make the world a better place.
     - DEVELOPERS-GUIDE.md
     - OPERATORS-GUIDE.md
     - In the doc folder
+    - Official Website: https://cryt.crytrex.com
+    - Click Wiki on this repository for more info.
 
 ----
 
