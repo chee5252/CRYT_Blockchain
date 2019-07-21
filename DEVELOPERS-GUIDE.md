@@ -35,8 +35,6 @@
   - [Vincent Driessen's Branching Model](http://nvie.com/posts/a-successful-git-branching-model/)
   - **tl;dr:**
     - master is release branch
-    - develop is maintained by Jean-Luc
-    - feature/abc is yours
 
 ### Design ###
 
