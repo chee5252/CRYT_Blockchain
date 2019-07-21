@@ -17,8 +17,3 @@
   - next run of NRS will upgrade database if necessary
   
 ----
-
-## How to manage multiple NRS-nodes? ##
-  Check [Nxt-Kit's homepage](https://github.com/nxt-ext/nxt-kit) for more information.
-
-----
