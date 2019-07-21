@@ -57,7 +57,7 @@
 ### Testing ###
 
   - [to be filled by Lior, kushti]
-  - all API calls can be tested manually from the auto-generated http://localhost:7876/test page
+  - all API calls can be tested manually from the auto-generated http://localhost:1112/test page
   - many tests need blocks to be generated, see the examples how to fake the forging process
   - write your tests against the http API or the public java API, which are relatively stable
   
@@ -91,15 +91,6 @@
     - Create a new html modal also in index.html, the modals start around line 1750 at time of writing
     - It is fairly easy to make a modal based upon the information from other modals already created.
 
-### Translation ###
-
-#### Language Translations ####
-
-Translation of the client UI to other languages is done by the community within a crowdsourced process on the platform **Crowdin**:
-
-- https://crowdin.com/project/nxt-ui-translation
-
-If you feel comfortable translating you are very welcome to join and help with translations.
 
 #### Coding ####
 
