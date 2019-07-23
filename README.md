@@ -48,14 +48,12 @@ CRYT is a Blockchain ecosystem to make the world a better place.
 
   - Ubuntu 18:04
     - `apt install default-jdk`
-    - `apt install openjdk-11-jdk-headless`
     - `git clone https://github.com/CryTrExcom/CRYT_Blockchain.git`
-    - `sudo apt update`
     - `sudo ufw allow 11111`
     - `sudo ufw allow 11112`
     - `cd CRYT_Blockchain`
-    - `screen`
     - `sh ./compile.sh`
+    - `screen`
     - `sh ./run.sh`
     - `CTRL+A+D`
 
