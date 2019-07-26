@@ -17,18 +17,13 @@ CRYT is a Blockchain ecosystem to make the world a better place.
 ----
 ## Run it! ##
 
-  - Double on:
-  - Unix: `./start.sh`
-  - Window: `run.bat`
+  - Download this Repository and extract or `git clone https://github.com/CryTrExcom/CRYT_Blockchain.git`.
+  - Go to CRYT_Blockchain Folder.
+  - Compile with sh ./compile.sh (Linux) or win-compile.sh (Windows).
+  - Run with sh ./run.sh (Linux) or run.bat (Windows).
 
-  - wait for the JavaFX wallet window to open
-  - on platforms without JavaFX, open http://localhost:11112/ in a browser
-
-----
-## Compile it! ##
-
-  - if necessary with: `./compile.sh`
-  - you need jdk-8 as well
+  - wait for the JavaFX wallet window to open.
+  - on platforms without JavaFX, open http://localhost:11112/ in a browser.
 
 ----
 ## Troubleshooting the NRS (CRYT Reference Software) ##
