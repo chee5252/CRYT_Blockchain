@@ -16,111 +16,114 @@
 
 <div id="exchange_shape_shift_page" class="page" xmlns="http://www.w3.org/1999/html">
 <section class="exchange_page_header content-header"><h1 align="center"><img src="img/stripe.png" alt="Stripe" height="32px"><span> </span><span>BUY CRYT With Credit Card</span></h1>
-    </section>
+  </section>
 
     <section class="exchange_page_content content">
         <div style="color:#838383;margin-bottom:5px">
-            <p align="center"><strong>Buy CRYT with Credit Card</strong></p>
-            <p align="center"><em>**Work over SSL only </em>(https://wallet.crytrex.com)</p>
-            <p align="center">After Transaction is Completed, send Stripe Payment id received in your email to: <a href="mailto:buycryt@crytrex.com?subject=Stripe CRYT Buy" target="_blank">buycryt@crytrex.com</a><br>
-and write your CRYT Blockchain Wallet Address <em>"CRYT-****-****-****-*****"</em></p>
-<p align="center"><em>Your CRYT will be Sent to Wallet after e-mail with Details is Received.</em></p><br />
-<br />
+            <p align="center"><strong>Buy 10$ CRYT with Credit Card</strong></p>
+<p align="center">		
+<div class="container">
+  <div class="item" align="center">
+                <!-- Product details -->
+          <div id="buynow">
+            <button class="stripe-button" id="payButton"><span class="btn">Purchase 10$ CRYT</span></button>
+            <input type="hidden" id="payProcess" value="0"/>
+        </div>
+    </div>
+    <div id="paymentDetails" style="display: none;">
+        <p class="aligncenter green bigger">Your payment was successful.</p>
+        <h2>Payment Information</h2>
+        <p>
+        Order ID: <span id="orderID">&#x3C;ORDER_ID&#x3E;</span><br/>
+        Transaction ID: <span id="txnID">&#x3C;TX_ID&#x3E;</span><br/>
+        Paid Amount: <span>$5 USD</span><br/>
+        Next Step: <span>Send Transaction ID and your CRYT-Address to stripe@crytrex.com, and Team Send CRYT to Your Account on Next Minutes.</span><br/>
+        </p>
+    </div>
+</div>
 
-							<p align="center">											
-<p align="center"><button class="btn" id="5button">Purchase 5$ CRYT</button>
-<button class="btn" id="10button">Purchase 10$ CRYT</button>
-<button class="btn" id="25button">Purchase 25$ CRYT</button></p>
-<p align="center"><button class="btn" id="50button">Purchase 50$ CRYT</button>
-<button class="btn" id="100button">Purchase 100$ CRYT</button>
-<button class="btn" id="250button">Purchase 250$ CRYT</button></p>
+
 <script>
 var handler = StripeCheckout.configure({
-  key: 'pk_live_3ABG3k8Pwez4ScGsrjoYj3oI',
-  image: 'https://cryt.crytrex.com/logo.png',
-  locale: 'auto',
-  token: function(token) {
-    // You can access the token ID with `token.id`.
-    // Get the token ID to your server-side code for use.
-  }
+    key: 'pk_live_3ABG3k8Pwez4ScGsrjoYj3oI',
+    image: 'https://cryt.crytrex.com/logo.png',
+    locale: 'auto',
+    token: function(token) {
+        $('#paymentDetails').hide();
+        $('#payProcess').val(1);
+        $.ajax({
+            url: 'https://cryt.crytrex.com/stripe/stripe_charge.php',
+            type: 'POST',
+            data: {stripeToken: token.id, stripeEmail: token.email, itemName: 'Buy CRYT', itemPrice: 1000, currency: 'usd'},
+            dataType: "json",
+            beforeSend: function(){
+                $('#payButton').prop('disabled', true);
+                $('#payButton').html('Please wait...');
+            },
+            success: function(data){
+                $('#payProcess').val(0);
+                if(data.status == 1){
+                    $('#buynow').hide();
+                    $('#txnEmail').html(token.email);
+                    $('#orderID').html(data.txnData.id);
+                    $('#txnID').html(data.txnData.balance_transaction);
+                    $('#paymentDetails').show();
+                }else {
+                    $('#payButton').prop('disabled', false);
+                    $('#payButton').html('Purchase 10$ CRYT');
+                    alert('Some problem occurred, please try again.');
+                }
+            },
+            error: function(data) {
+                $('#payProcess').val(0);
+                $('#payButton').prop('disabled', false);
+                $('#payButton').html('Buy Now');
+                alert('Some problem occurred, please try again.');
+            }
+        });
+    }
 });
 
-document.getElementById("5button").addEventListener("click", function() {
-  handler.open({
-    name: 'CryTrEx.com',
-    description: 'Buy CRYT',
-    currency: 'usd',
+var stripe_closed = function(){
+    var processing = $('#payProcess').val();
+    if (processing == 0){
+        $('#payButton').prop('disabled', false);
+        $('#payButton').html('Purchase 10$ CRYT');
+    }
+};
+
+var eventTggr = document.getElementById('payButton');
+if(eventTggr){
+    eventTggr.addEventListener('click', function(e) {
+        $('#payButton').prop('disabled', true);
+        $('#payButton').html('Please wait...');
+        
+        // Open Checkout with further options:
+        handler.open({
+            name: 'CryTrEx.com',
+            description: 'Buy CRYT',
+            amount: 1000,
+            currency: 'usd',
     zipCode: true,
 	billingaddress: true,
 	shippingAddress: true,
-    amount: 500
-  });
-});
-document.getElementById("10button").addEventListener("click", function() {
-  handler.open({
-    name: 'CryTrEx.com',
-    description: 'Buy CRYT',
-    currency: 'usd',
-    zipCode: true,
-	billingaddress: true,
-	shippingAddress: true,
-    amount: 1000
-  });
-});
-document.getElementById("25button").addEventListener("click", function() {
-  handler.open({
-    name: 'CryTrEx.com',
-    description: 'Buy CRYT',
-    currency: 'usd',
-    zipCode: true,
-	billingaddress: true,
-	shippingAddress: true,
-    amount: 2500
-  });
-});
-document.getElementById("50button").addEventListener("click", function() {
-  handler.open({
-    name: 'CryTrEx.com',
-    description: 'Buy CRYT',
-    currency: 'usd',
-    zipCode: true,
-	billingaddress: true,
-	shippingAddress: true,
-    amount: 5000
-  });
-});
-document.getElementById("100button").addEventListener("click", function() {
-  handler.open({
-    name: 'CryTrEx.com',
-    description: 'Buy CRYT',
-    currency: 'usd',
-    zipCode: true,
-	billingaddress: true,
-	shippingAddress: true,
-    amount: 10000
-  });
-});
-document.getElementById("255button").addEventListener("click", function() {
-  handler.open({
-    name: 'CryTrEx.com',
-    description: 'Buy CRYT',
-    currency: 'usd',
-    zipCode: true,
-	billingaddress: true,
-	shippingAddress: true,
-    amount: 25000
-  });
-});
+            closed:	stripe_closed
+        });
+        e.preventDefault();
+    });
+}
 
 // Close Checkout on page navigation:
 window.addEventListener('popstate', function() {
   handler.close();
 });
 </script>
+
   </p><br />
 <br />
 
 <p align="center"><img src="img/powered-by-stripe.png" alt="Stripe"></p>
-<p align="center"><em>*amount is based on Live Price.</em></p><br>        </div>
+<p align="center"><em>*amount sent is based on Live Price.</em></p>
+<br>        </div>
     </section>
 </div>
