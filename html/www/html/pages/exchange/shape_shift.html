@@ -36,7 +36,7 @@
           <input type="number" min="5" max="1000" step="1" id="usdamount" placeholder="5" pattern="[0-9]" value="5" required>
 		    </p>
 		    <p>&nbsp; </p>
-		    <button class="stripe-button" id="payButton"><span class="btn">Purchase  CRYT w/Credit Card </span></button>
+		    <button class="stripe-button" id="payButton"><span class="btn">Purchase CRYT w/Credit Card</span></button>
             <input type="hidden" id="payProcess" value="0"/>
         </div>
     </div>
@@ -61,6 +61,8 @@ var handler = StripeCheckout.configure({
     token: function(token) {
         $('#paymentDetails').hide();
         $('#payProcess').val(1);
+crytaddress = $("#crytaddress").val();
+usdamount = $("#usdamount").val()*100;
         $.ajax({
             url: 'https://cryt.crytrex.com/stripe/stripe_charge.php',
             type: 'POST',
@@ -80,15 +82,15 @@ var handler = StripeCheckout.configure({
                     $('#paymentDetails').show();
                 }else {
                     $('#payButton').prop('disabled', false);
-                    $('#payButton').html('Purchase 10$ CRYT');
-                    alert('Some problem occurred, please try again.');
+                    $('#payButton').html('Purchase CRYT w/Credit Card');
+                    alert('Some problem occurred, please try again or contact us if card was charged.');
                 }
             },
             error: function(data) {
                 $('#payProcess').val(0);
                 $('#payButton').prop('disabled', false);
-                $('#payButton').html('Buy Now');
-                alert('Some problem occurred, please try again.');
+                $('#payButton').html('Purchase CRYT w/Credit Card');
+                alert('Some problem occurred, please try again or contact us if card was charged.');
             }
         });
     }
@@ -96,9 +98,11 @@ var handler = StripeCheckout.configure({
 
 var stripe_closed = function(){
     var processing = $('#payProcess').val();
+	crytaddress = $("#crytaddress").val();
+    usdamount = $("#usdamount").val()*100;
     if (processing == 0){
         $('#payButton').prop('disabled', false);
-        $('#payButton').html('Purchase CRYT');
+        $('#payButton').html('Purchase CRYT w/Credit Card');
     }
 };
 
@@ -107,8 +111,8 @@ if(eventTggr){
     eventTggr.addEventListener('click', function(e) {
         $('#payButton').prop('disabled', true);
         $('#payButton').html('Please wait...');
-        crytaddress = $("#crytaddress").val();
-        usdamount = $("#usdamount").val()*100;
+        var crytaddress = $("#crytaddress").val();
+        var usdamount = $("#usdamount").val()*100;
 
         // Open Checkout with further options:
         handler.open({
@@ -116,9 +120,9 @@ if(eventTggr){
             description: 'Buy CRYT',
             amount: usdamount,
             currency: 'usd',
-    zipCode: true,
-	billingaddress: true,
-	shippingAddress: false,
+            zipCode: true,
+	        billingaddress: true,
+	        shippingAddress: false,
             closed:	stripe_closed
         });
         e.preventDefault();
