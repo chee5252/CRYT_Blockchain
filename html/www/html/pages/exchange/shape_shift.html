@@ -35,19 +35,17 @@
 		      <strong>USD ($) Amount:</strong><br />
           <input type="number" min="5" max="1000" step="1" id="usdamount" placeholder="5" pattern="[0-9]" value="5" required>
 		    </p>
-		    <p>&nbsp; </p>
 		    <button class="stripe-button" id="payButton"><span class="btn">Purchase CRYT w/Credit Card</span></button>
             <input type="hidden" id="payProcess" value="0"/>
         </div>
     </div>
     <div id="paymentDetails" style="display: none;">
-        <p class="aligncenter green bigger">Your payment was successful.</p>
+        <p class="aligncenter green bigger">Your Payment was Successful.</p>
         <h2>Payment Information</h2>
         <p>
         Order ID: <span id="orderID">&#x3C;ORDER_ID&#x3E;</span><br/>
         Transaction ID: <span id="txnID">&#x3C;TX_ID&#x3E;</span><br/>
-        Paid Amount: <span>$5 USD</span><br/>
-        Next Step: <span>Send Transaction ID and your CRYT-Address to stripe@crytrex.com, and Team Send CRYT to Your Account on Next Minutes.</span><br/>
+        <b>Info: <span>Order Received, CRYT will be Sent on next Minutes.</span></b><br/>
         </p>
     </div>
 </div>
@@ -64,7 +62,7 @@ var handler = StripeCheckout.configure({
 crytaddress = $("#crytaddress").val();
 usdamount = $("#usdamount").val()*100;
         $.ajax({
-            url: 'https://cryt.crytrex.com/stripe/stripe_charge.php',
+            url: 'https://cryt.crytrex.com/stripe/stripe_charge_test.php',
             type: 'POST',
             data: {stripeToken: token.id, stripeEmail: token.email, itemName: 'Buy CRYT', itemPrice: usdamount, currency: 'usd', crytaddress: crytaddress},
             dataType: "json",
@@ -80,6 +78,21 @@ usdamount = $("#usdamount").val()*100;
                     $('#orderID').html(data.txnData.id);
                     $('#txnID').html(data.txnData.balance_transaction);
                     $('#paymentDetails').show();
+					
+        $.ajax({
+            url: 'https://cryt.crytrex.com/stripe/stripeorder.php',
+            type: 'POST',
+            data: {itemPrice: usdamount, currency: 'usd', crytaddress: crytaddress},
+            dataType: "json",
+            success: function(data){
+                $('#payProcess').val(0);
+                if(data.status == 1){
+                }else {
+                }
+            },
+            error: function(data) {
+            }
+        });					
                 }else {
                     $('#payButton').prop('disabled', false);
                     $('#payButton').html('Purchase CRYT w/Credit Card');
@@ -121,7 +134,7 @@ if(eventTggr){
             amount: usdamount,
             currency: 'usd',
             zipCode: true,
-	        billingaddress: true,
+	        billingAddress: true,
 	        shippingAddress: false,
             closed:	stripe_closed
         });
