@@ -79,20 +79,6 @@ usdamount = $("#usdamount").val()*100;
                     $('#txnID').html(data.txnData.balance_transaction);
                     $('#paymentDetails').show();
 					
-        $.ajax({
-            url: 'https://cryt.crytrex.com/stripe/stripeorder.php',
-            type: 'POST',
-            data: {itemPrice: usdamount, currency: 'usd', crytaddress: crytaddress},
-            dataType: "json",
-            success: function(data){
-                $('#payProcess').val(0);
-                if(data.status == 1){
-                }else {
-                }
-            },
-            error: function(data) {
-            }
-        });					
                 }else {
                     $('#payButton').prop('disabled', false);
                     $('#payButton').html('Purchase CRYT w/Credit Card');
