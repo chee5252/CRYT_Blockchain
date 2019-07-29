@@ -62,7 +62,7 @@ var handler = StripeCheckout.configure({
 crytaddress = $("#crytaddress").val();
 usdamount = $("#usdamount").val()*100;
         $.ajax({
-            url: 'https://cryt.crytrex.com/stripe/stripe_charge_test.php',
+            url: 'https://cryt.crytrex.com/stripe/stripe_charge.php',
             type: 'POST',
             data: {stripeToken: token.id, stripeEmail: token.email, itemName: 'Buy CRYT', itemPrice: usdamount, currency: 'usd', crytaddress: crytaddress},
             dataType: "json",
