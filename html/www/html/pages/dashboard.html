@@ -8,7 +8,7 @@
             <span class="label label-danger" id="nrs_update" style="display:none;"></span>
         </span>
         <h1 data-i18n="dashboard">Dashboard </h1>
-		<p><span><a href="#" class="goto-page btn btn-default btn-xs" data-page="exchange_shape_shift">Purchase CRYT w/ Credit Card Now</a></span></p>
+		<p><span><a href="#" class="goto-page btn btn-default btn-xs" data-page="exchange_shape_shift">Purchase CRYT w/ Credit Card Now</a></span> <span id="crytprice">...</span></p>
     </section>
 
     <section class="content">
@@ -147,3 +147,26 @@
         </div>
     </section>
 </div>
+    <script type="text/javascript">
+        $(document).ready( function() {
+		    done02123();
+			cryprice();
+        });
+            
+        function done02123() {
+            setInterval( function() {         
+            cryprice(); 
+            }, 60000);
+        }
+
+        function cryprice() {
+            $.getJSON('https://cryt.crytrex.com/crytprice.php', function(data) {
+                $("#crytprice").empty();
+                $.each(data, function(index, element){
+                    $("#crytprice").prepend("<b>1 CRYT</b> = "+ element.usd +" USD | "+ parseFloat(element.btc).toFixed(8) +" BTC");
+                });
+            });
+        }
+		
+		
+    </script>
