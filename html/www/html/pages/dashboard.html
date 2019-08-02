@@ -1,14 +1,7 @@
 <div id="dashboard_page" class="page" style="display:block">
     <section class="content-header">
-        <span style="float:right; font-size:115%;">
-            <span id="nrs_version_info"></span>:
-            <a href="#" class="small-box-footer" data-toggle="modal" data-target="#nrs_modal">
-                <span id="nrs_version" class="loading_dots"><span>.</span><span>.</span><span>.</span></span>
-            </a>
-            <span class="label label-danger" id="nrs_update" style="display:none;"></span>
-        </span>
         <h1 data-i18n="dashboard">Dashboard </h1>
-		<p><span><a href="#" class="goto-page btn btn-default btn-xs" data-page="exchange_shape_shift">Purchase CRYT w/ Credit Card Now</a></span> <span id="crytprice">...</span></p>
+		<p><span><a href="#" class="goto-page btn btn-default btn-xs" data-page="exchange_shape_shift">Purchase CRYT w/ Credit Card Now</a></span> <a href="#" class="goto-page" data-page="exchange_shape_shift"><span class="btn btn-default btn-xs" id="crytprice">...</span></a></p>
     </section>
 
     <section class="content">
@@ -160,13 +153,12 @@
         }
 
         function cryprice() {
-            $.getJSON('https://cryt.crytrex.com/crytprice.php', function(data) {
+            $.getJSON('https://cryt.crytrex.com/crytprice_mobile_1.php', function(data) {
                 $("#crytprice").empty();
                 $.each(data, function(index, element){
-                    $("#crytprice").prepend("<b>1 CRYT</b> = "+ element.usd +" USD | "+ parseFloat(element.btc).toFixed(8) +" BTC");
+                    $("#crytprice").prepend("<b>1 CRYT=</b> "+ element.CRYT.USD.PRICE +" USD | "+ parseFloat(element.CRYT.USD.CHANGEPCTDAY).toFixed(2) +"%");
                 });
             });
-        }
-		
-		
+        }		
+			
     </script>
