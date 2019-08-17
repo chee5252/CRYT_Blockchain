@@ -404,9 +404,7 @@ public final class Nxt {
                 long currentTime = System.currentTimeMillis();
                 Logger.logMessage("Initialization took " + (currentTime - startTime) / 1000 + " seconds");
                 Logger.logMessage(Nxt.APPLICATION + " server " + VERSION + " started successfully.");
-                Logger.logMessage("Copyright © 2013-2016 The Nxt Core Developers.");
-                Logger.logMessage("Copyright © 2016-2019 Jelurida IP B.V.");
-                Logger.logMessage("Distributed under the Jelurida Public License version 1.1 for the Nxt Public Blockchain Platform, with ABSOLUTELY NO WARRANTY.");
+                Logger.logMessage("Copyright © 2019 The CRYT Core Developers.");
                 if (API.getWelcomePageUri() != null) {
                     Logger.logMessage("Client UI is at " + API.getWelcomePageUri());
                 }
